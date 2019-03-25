@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    
+    .task_name {
+        text-decoration: none;
+        color: #000;
+    }
+    
+    .task_name:hover {
+        color: #333;
+    }
+
+    .done {
+        color: green;
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Todo list</h1>
+
+    <ul>
+    {% for item in list_items %}
+    	{% if item.getIsDone %}
+    		<a href="/list/item/description/{{ item.getId }}" class="task_name done"><li>{{ item.getName }}</a> <a href="/list/item/delete/{{ item.getId }}">Delete</a></li>
+    	{% else %}
+    		<a href="/list/item/description/{{ item.getId }}" class="task_name"><li>{{ item.getName }}</a> <a href="/list/item/done/{{ item.getId }}">Done</a> <a href="/list/item/delete/{{ item.getId }}">Delete</a></li>
+    	{% endif %}
+    {% endfor %}
+    <br>
+    <form action="/list/item/add" method="POST">
+    	<label for="task_name">Task name: </label><input type="text" placeholder="new task" id="task_name" name="task_name" required>
+        <br><label for="task_description">Description: </label><textarea rows="10" cols="40" name="task_description" id="task_description" required></textarea>
+    	<br><input type="submit" value="Add">
+    </form>
+    </ul>
+</div>
+{% endblock %}
