@@ -27,9 +27,9 @@
     <ul>
     {% for item in list_items %}
     	{% if item.getIsDone %}
-    		<a href="/list/item/description/{{ item.getId }}" class="task_name done"><li>{{ item.getName }}</a> <a href="/list/item/delete/{{ item.getId }}">Delete</a></li>
+    		<a href="/list/item/description/{{ item.getId }}" class="task_name done"><li>{{ item.getName }}</a> <a href="/list/item/delete/{{ item.getId }}" class="btn btn-danger">Delete</a></li><br>
     	{% else %}
-    		<a href="/list/item/description/{{ item.getId }}" class="task_name"><li>{{ item.getName }}</a> <a href="/list/item/done/{{ item.getId }}">Done</a> <a href="/list/item/delete/{{ item.getId }}">Delete</a></li>
+    		<a href="/list/item/description/{{ item.getId }}" class="task_name"><li>{{ item.getName }}</a> <a href="/list/item/done/{{ item.getId }}" class="btn btn-primary">Done</a> <a href="/list/item/delete/{{ item.getId }}" class="btn btn-danger">Delete</a></li><br>
     	{% endif %}
     {% endfor %}
     <br>

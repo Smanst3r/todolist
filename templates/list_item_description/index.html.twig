@@ -13,10 +13,10 @@
 	<h1>{{ name }}</h1>
 	<p class="description">{{ description }}</p>
 	{% if isDone %}
-		<a href="/list/item/resetDone/{{ task_id }}">Reset</a>
+		<a href="/list/item/resetDone/{{ task_id }}" class="btn btn-primary">Reset</a>
 	{% else %}
-		<a href="/list/item/done/{{ task_id }}">Done</a>
+		<a href="/list/item/done/{{ task_id }}" class="btn btn-primary">Done</a>
 	{% endif %}
-	<a href="/list/item/delete/{{ task_id }}" style="float: right">Delete</a>
+	<a href="/list/item/delete/{{ task_id }}" style="float: right" class="btn btn-danger">Delete</a>
 </div>
 {% endblock %}
