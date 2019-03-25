@@ -34,8 +34,14 @@
     {% endfor %}
     <br>
     <form action="/list/item/add" method="POST">
-    	<label for="task_name">Task name: </label><input type="text" placeholder="new task" id="task_name" name="task_name" required>
-        <br><label for="task_description">Description: </label><textarea rows="10" cols="40" name="task_description" id="task_description" required></textarea>
+    	<label for="task_name">Task name: </label> <input type="text" placeholder="new task" id="task_name" name="task_name" required>
+        <br>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Description: </span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
     	<br><input type="submit" value="Add">
     </form>
     </ul>
