@@ -13,7 +13,7 @@ use App\Entity\ListItem;
 class ListItemController extends AbstractController
 {
     /**
-     * @Route("/list/item/add", name="list_item_add")
+     * @Route("/list/item/add", name="list_item_add", methods={"POST"})
      */
     public function index(Request $request)
     {
@@ -35,7 +35,7 @@ class ListItemController extends AbstractController
     }
 
     /**
-   	 * @Route("/list/item/done/{id}", name="list_item_done", requirements={"id"="\d+"})
+   	 * @Route("/list/item/done/{id}", name="list_item_done", requirements={"id"="\d+"}, methods={"POST"})
    	*/
     public function make_done($id) {
     	$entityManager = $this->getDoctrine()->getManager();
@@ -53,7 +53,7 @@ class ListItemController extends AbstractController
     }
 
     /**
-     * @Route("/list/item/resetDone/{id}", name="list_item_resetDone", requirements={"id"="\d+"})
+     * @Route("/list/item/resetDone/{id}", name="list_item_resetDone", requirements={"id"="\d+"}, methods={"POST"})
 	*/
     public function reset_done($id) {
     	$entityManager = $this->getDoctrine()->getManager();
@@ -71,7 +71,7 @@ class ListItemController extends AbstractController
     }
 
     /**
-     * @Route("/list/item/delete/{id}", name="list_item_delete", requirements={"id"="\d+"})
+     * @Route("/list/item/delete/{id}", name="list_item_delete", requirements={"id"="\d+"}, methods={"POST"})
 	*/
 	public function delete_list_item($id) {
 		$entityManager = $this->getDoctrine()->getManager();
