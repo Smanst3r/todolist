@@ -6,7 +6,7 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    
+
     .task_name {
         text-decoration: none;
         color: #000;
@@ -18,6 +18,12 @@
 
     .done {
         color: green;
+        text-decoration: line-through;
+    }
+
+    .done:hover {
+        color: #0b400e;
+        text-decoration: line-through;
     }
 </style>
 
@@ -27,9 +33,20 @@
     <ul>
     {% for item in list_items %}
     	{% if item.getIsDone %}
-    		<a href="/list/item/description/{{ item.getId }}" class="task_name done"><li>{{ item.getName }}</a> <a href="/list/item/delete/{{ item.getId }}" class="btn btn-danger">Delete</a></li><br>
+    		<a href="/list/item/description/{{ item.getId }}" class="task_name done"><li>{{ item.getName }}</a>
+            <form action="/list/item/delete/{{ item.getId }}" method="POST">
+                <input type="submit" name="delete" value="delete" class="btn btn-danger">
+            </form> 
     	{% else %}
-    		<a href="/list/item/description/{{ item.getId }}" class="task_name"><li>{{ item.getName }}</a> <a href="/list/item/done/{{ item.getId }}" class="btn btn-primary">Done</a> <a href="/list/item/delete/{{ item.getId }}" class="btn btn-danger">Delete</a></li><br>
+    		<a href="/list/item/description/{{ item.getId }}" class="task_name"><li>{{ item.getName }}</a> 
+            
+            <form action="/list/item/done/{{ item.getId }}" method="POST">
+                <input type="submit" name="done" value="done" class="btn btn-primary">
+            </form>
+
+            <form action="/list/item/delete/{{ item.getId }}" method="POST">
+                <input type="submit" name="delete" value="delete" class="btn btn-danger">
+            </form>
     	{% endif %}
     {% endfor %}
     <br>
@@ -40,7 +57,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">Description: </span>
             </div>
-            <textarea class="form-control" aria-label="With textarea"></textarea>
+            <textarea class="form-control" aria-label="With textarea" name="task_description"></textarea>
         </div>
     	<br><input type="submit" value="Add">
     </form>

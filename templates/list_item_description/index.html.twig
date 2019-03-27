@@ -7,17 +7,24 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     .description { word-break: break-all; }
+    input[name="delete"] { float: right; }
 </style>
 
 <div class="example-wrapper">
 	<h1>{{ name }}</h1>
 	<p class="description">{{ description }}</p>
 	{% if isDone %}
-		<a href="/list/item/resetDone/{{ task_id }}" class="btn btn-primary">Reset</a>
+		<form action="/list/item/resetDone/{{ task_id }}" method="POST">
+			<input type="submit" name="resetDone" value="Reset" class="btn btn-primary">
+		</form>
 	{% else %}
-		<a href="/list/item/done/{{ task_id }}" class="btn btn-primary">Done</a>
+		<form action="/list/item/done/{{ task_id }}" method="POST">
+			<input type="submit" name="done" value="Done" class="btn btn-primary">
+		</form>
 	{% endif %}
-	<a href="/list/item/delete/{{ task_id }}" style="float: right" class="btn btn-danger">Delete</a>
+	<form action="/list/item/delete/{{ task_id }}" method="POST">
+		<input type="submit" name="delete" value="Delete" class="btn btn-danger">
+	</form>
 	<a href="/" class="btn btn-secondary">Back</a>
 </div>
 {% endblock %}
